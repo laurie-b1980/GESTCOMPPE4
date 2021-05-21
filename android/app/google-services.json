@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1016911858023",
+    "project_id": "gestcom-95ad1",
+    "storage_bucket": "gestcom-95ad1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1016911858023:android:082c6c6a052563c0e107c2",
+        "android_client_info": {
+          "package_name": "com.example.testflutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1016911858023-d65gm0ro5ugau8ehbc7abeseqg1sep3r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfY0rQZDF3tGdEmQNizaGCeoY35DF1fNI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1016911858023-d65gm0ro5ugau8ehbc7abeseqg1sep3r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
