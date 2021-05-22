@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:testflutter/Screens/ajoutCommande.dart';
 import 'package:testflutter/Services/database.dart';
 
 class ArticleCommande extends StatefulWidget {
@@ -9,6 +10,7 @@ class ArticleCommande extends StatefulWidget {
 
 class _ArticleCommandeState extends State<ArticleCommande> {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
   List<Map> listeArticle = [];
 
   List<Map> getListeArticle() => listeArticle;
@@ -37,7 +39,7 @@ class _ArticleCommandeState extends State<ArticleCommande> {
                         icon: const Icon(Icons.add),
                         onPressed: () {
                           listeArticle.add({'article': art.id});
-                          print('$listeArticle');
+                          print(listeArticle);
                         }),
                     title: Text(
                         'Nom de l\'article:' + art.data()['Nom article '])),
@@ -48,3 +50,9 @@ class _ArticleCommandeState extends State<ArticleCommande> {
         });
   }
 }
+/*Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AjoutCommandes(),
+                                  settings:
+                                      RouteSettings(arguments: listeArticle)));*/

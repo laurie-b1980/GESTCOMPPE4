@@ -45,15 +45,40 @@ class DetailClient extends StatelessWidget {
               Text('$email'),
               SizedBox(height: 30.00),
               TextButton(
-                  onPressed: () async {
-                    await db.deleteArticle('$idclient');
-                    print('L\'article a comme ID : $idclient');
-                  },
-                  child: Text("Supprimer client "),
-                  style: TextButton.styleFrom(
-                    primary: Colors.white,
-                    backgroundColor: Colors.grey,
-                  )),
+                onPressed: () {
+                  showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                      title:
+                          Text('Etes vous sur de vouloir supprimer Article  ?'),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, 'Annuler'),
+                          child: const Text('Annuler'),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            db.deleteArticle('$idclient');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Clients(),
+                                ));
+                          },
+                          child: const Text('Confirmez'),
+                        )
+                      ],
+                    ),
+                  );
+                },
+                child: Text(
+                  "Supprimer",
+                  style: TextStyle(color: Colors.white, fontSize: 15.0),
+                ),
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.grey,
+                ),
+              ),
               TextButton(
                   onPressed: () {
                     Navigator.push(

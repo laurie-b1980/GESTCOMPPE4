@@ -1,11 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:testflutter/Screens/AjoutClient.dart';
+import 'package:testflutter/Screens/search.dart';
 import 'package:testflutter/services/database.dart';
 import 'package:testflutter/Screens/detailClient.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class Clients extends StatefulWidget {
+  final List<String> listExample = [];
+
   @override
   _ClientsState createState() => _ClientsState();
 }
@@ -13,6 +16,9 @@ class Clients extends StatefulWidget {
 class _ClientsState extends State<Clients> {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   DataBaseService db = DataBaseService();
+  final List<String> listExample = [];
+
+  List<String> recupClients() => listExample;
 
   Future clients() async {
     return await db.recupClients();
@@ -43,7 +49,7 @@ class _ClientsState extends State<Clients> {
                     style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.blueGrey)),
-                  )
+                  ),
                 ],
               ),
               body: Center(
@@ -61,7 +67,14 @@ class _ClientsState extends State<Clients> {
                           },
                           child: Text('Ajouter'),
                         ),
-                        TextButton(onPressed: () {}, child: Text('Rechercher')),
+                        TextButton(
+                            onPressed: () {
+                              showSearch(
+                                  context: context,
+                                  delegate: RechercherItem(widget.listExample));
+                              print('$listExample');
+                            },
+                            child: Text('Rechercher')),
                       ]),
                       Container(
                           padding: EdgeInsets.symmetric(vertical: 5.0),

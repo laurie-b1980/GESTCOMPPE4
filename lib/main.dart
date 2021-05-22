@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testflutter/Screens/wrapper.dart';
 import 'package:testflutter/Services/auth.dart';
-import 'package:testflutter/pageAuth/connexion.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:testflutter/constants/admin.dart';
@@ -31,6 +30,7 @@ class MyApp extends StatelessWidget {
                     accentColor: Colors.white,
                   ),
                   home: Wrapper(),
+                  debugShowCheckedModeBanner: false,
                 ));
           }
           return Text("Chargement...");
