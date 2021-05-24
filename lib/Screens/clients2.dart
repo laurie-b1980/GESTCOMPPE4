@@ -1,14 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+/*import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:testflutter/Screens/AjoutClient.dart';
-import 'package:testflutter/Screens/search.dart';
 import 'package:testflutter/services/database.dart';
 import 'package:testflutter/Screens/detailClient.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class Clients extends StatefulWidget {
-  final List<String> listExample = [];
-
   @override
   _ClientsState createState() => _ClientsState();
 }
@@ -16,26 +13,83 @@ class Clients extends StatefulWidget {
 class _ClientsState extends State<Clients> {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   DataBaseService db = DataBaseService();
-  final List<String> listExample = [];
 
   Future clients() async {
     return await db.recupClients();
   }
 
-  List<String> recupClients() => listExample;
+  TextEditingController _searchcontroller = TextEditingController();
+
+  Future resultsLoaded;
+  List _allResults = [];
+  List _resultsList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _searchcontroller.addListener(_onSearchChanged);
+  }
+
+  @override
+  void dispose() {
+    _searchcontroller.removeListener(_onSearchChanged);
+    _searchcontroller.dispose();
+    super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    resultsLoaded = rechercheClientStreamSnapshot();
+  }
+
+  _onSearchChanged() {
+    searchResultList();
+    print(_searchcontroller.text);
+  }
+
+  searchResultList() {
+    var showResults = [];
+    if (_searchcontroller.text != "") {
+      for (var clientsnapshot in _allResults) {
+        var title = rechercheClientStreamSnapshot().title.toLowerCase();
+        if (title.contains(_searchcontroller.text.toLowerCase())) {
+          showResults.add(clientsnapshot);
+        }
+      }
+    } else {
+      showResults = List.from(_allResults);
+    }
+
+    setState(() {
+      _resultsList = _allResults;
+    });
+  }
+
+  rechercheClientStreamSnapshot() async {
+    var data = await FirebaseFirestore.instance
+        .collection('clients')
+        .where('nom', isEqualTo: _searchcontroller.text)
+        .orderBy('nom')
+        .get();
+    setState(() {
+      _allResults = data.docs;
+    });
+    searchResultList();
+    return "Complet";
+  }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: clients(),
         builder: (context, snapshot) {
-          print(listExample);
           if (snapshot.hasError) {
             return Text("Something went wrong");
           }
           if (snapshot.connectionState == ConnectionState.done) {
             print("message: ${snapshot.data.docs}");
-
+            print("message ");
             return Scaffold(
               appBar: AppBar(
                 title: Text('GESTCOM clients'),
@@ -57,7 +111,7 @@ class _ClientsState extends State<Clients> {
                 child: ListView(
                     padding: const EdgeInsets.only(left: 70.0),
                     children: [
-                      Row(children: [
+                      Column(children: [
                         TextButton(
                           onPressed: () {
                             Navigator.push(
@@ -68,14 +122,24 @@ class _ClientsState extends State<Clients> {
                           },
                           child: Text('Ajouter'),
                         ),
-                        TextButton(
+                        TextField(
+                            controller: _searchcontroller,
+                            decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.search))),
+                        Expanded(
+                            child: ListView.builder(
+                                itemCount: _resultsList.length,
+                                itemBuilder:
+                                    (BuildContext context, int index) =>
+                                        _resultsList[index])),
+                        /*TextButton(
                             onPressed: () {
-                              showSearch(
+                              /*showSearch(
                                   context: context,
                                   delegate: RechercherItem(widget.listExample));
-                              print(listExample);
-                            },
-                            child: Text('Rechercher')),
+                              print('$listExample');
+                            },*/
+                            child: Text('Rechercher'))*/
                       ]),
                       Container(
                           padding: EdgeInsets.symmetric(vertical: 5.0),
@@ -108,7 +172,7 @@ class _ClientsState extends State<Clients> {
           return Text('Chargement...');
         });
   }
-}
+}*/
 
 /*AjoutCommandes(
                                   idclient: idclient,

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:testflutter/Services/articlelistcommande.dart';
 import 'package:testflutter/Services/database.dart';
 
@@ -37,4 +37,4 @@ class AjoutCommandes extends StatelessWidget {
           ]),
         ));
   }
-}
+}*/

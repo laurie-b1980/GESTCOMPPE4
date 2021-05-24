@@ -79,10 +79,10 @@ class _CommandesState extends State<Commandes> {
                                                 nomClient:
                                                     db.recupNomClientInCommande(
                                                         commande.id),
-                                                article:
+                                                idarticle:
                                                     db.recupArticlesInCommande(
                                                         commande.id))));
-                                    print('jjjjj');
+                                    print('bbbb');
                                   },
                                   child: Text('Numéro :' + commande.id));
                             }).toList(),
