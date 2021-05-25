@@ -19,8 +19,6 @@ class _ClientsState extends State<Clients> {
     return await db.recupClients();
   }
 
-  TextEditingController _textEditingController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(

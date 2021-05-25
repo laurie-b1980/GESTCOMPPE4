@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:testflutter/Screens/commandes.dart';
 
 import 'package:testflutter/Services/database.dart';
 
@@ -26,15 +28,28 @@ class DetailCommande extends StatefulWidget {
 class _DetailCommandeState extends State<DetailCommande> {
   DataBaseService db = DataBaseService();
 
-  Future article() async {
-    return await db.getArticle();
+  Future commande(String id) async {
+    return await db.recupArticlesInCommande(id);
+  }
+
+  Future client(String id) async {
+    print('euh ça ne marche pas!!!!!');
+    dynamic result = await db.recupNomClientInCommande(id);
+    print('voici ' + result);
+    return result;
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: article(),
+        future: Future.wait([
+          commande(widget.idcommande),
+          client(widget.idclient),
+        ]),
         builder: (context, AsyncSnapshot<dynamic> snapshot) {
+          print(snapshot.data[0].docs[0].data());
+          print(snapshot.data[1].docs[0].data());
+
           return Scaffold(
               appBar: AppBar(
                 backgroundColor: Colors.grey,
@@ -45,16 +60,16 @@ class _DetailCommandeState extends State<DetailCommande> {
                 child: Center(
                     child: Column(
                   children: [
-                    Text('Nom Client',
+                    Text('Coordonnées Client',
                         style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text('blaba'),
+                    Text(snapshot.data[1].docs[0].data().toString()),
                     SizedBox(height: 30.00),
                     Text('Articles',
                         style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text('nomarticle'),
-                    for (var element
+                    Text(snapshot.data[0].docs[0].data().toString()),
+                    /*for (var element
                         in snapshot.data.docs[0].data()["articles"])
-                      Text(element["nom"]),
+                      Text(element["nom"]),*/
                     SizedBox(height: 30.00),
                     TextButton(
                         onPressed: () {

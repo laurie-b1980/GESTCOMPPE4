@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+/*import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:testflutter/Screens/ajoutCommande.dart';
 import 'package:testflutter/Services/database.dart';
@@ -49,7 +49,7 @@ class _ArticleCommandeState extends State<ArticleCommande> {
           return Text('Chargement...');
         });
   }
-}
+}*/
 /*Navigator.push(
                               context,
                               MaterialPageRoute(

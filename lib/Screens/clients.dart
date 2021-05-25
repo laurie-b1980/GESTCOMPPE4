@@ -1,14 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:testflutter/Screens/AjoutClient.dart';
-import 'package:testflutter/Screens/search.dart';
+
 import 'package:testflutter/services/database.dart';
 import 'package:testflutter/Screens/detailClient.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class Clients extends StatefulWidget {
-  final List<String> listExample = [];
-
   @override
   _ClientsState createState() => _ClientsState();
 }
@@ -16,20 +14,16 @@ class Clients extends StatefulWidget {
 class _ClientsState extends State<Clients> {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   DataBaseService db = DataBaseService();
-  final List<String> listExample = [];
 
   Future clients() async {
     return await db.recupClients();
   }
-
-  List<String> recupClients() => listExample;
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: clients(),
         builder: (context, snapshot) {
-          print(listExample);
           if (snapshot.hasError) {
             return Text("Something went wrong");
           }
@@ -70,10 +64,10 @@ class _ClientsState extends State<Clients> {
                         ),
                         TextButton(
                             onPressed: () {
-                              showSearch(
+                              /*showSearch(
                                   context: context,
                                   delegate: RechercherItem(widget.listExample));
-                              print(listExample);
+                              print(listExample);*/
                             },
                             child: Text('Rechercher')),
                       ]),
