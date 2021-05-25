@@ -22,12 +22,21 @@ class _ClientsState extends State<Clients> {
     return await db.recupClients();
   }
 
+  Future list;
+  Future filtered;
+
+  @override
+  void initState() {
+    list = clients();
+    filtered = list;
+  }
+
   List<String> recupClients() => listExample;
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: clients(),
+        future: filtered,
         builder: (context, snapshot) {
           print(listExample);
           if (snapshot.hasError) {
@@ -57,7 +66,6 @@ class _ClientsState extends State<Clients> {
                 child: ListView(
                     padding: const EdgeInsets.only(left: 70.0),
                     children: [
-                      Row(children: [
                         TextButton(
                           onPressed: () {
                             Navigator.push(
@@ -68,15 +76,16 @@ class _ClientsState extends State<Clients> {
                           },
                           child: Text('Ajouter'),
                         ),
-                        TextButton(
-                            onPressed: () {
-                              showSearch(
-                                  context: context,
-                                  delegate: RechercherItem(widget.listExample));
-                              print(listExample);
-                            },
-                            child: Text('Rechercher')),
-                      ]),
+                        TextField(
+                          onChanged: (val) {
+                            val = val.toLowerCase();
+                            setState(() async {
+                              dynamic myList = await list;
+                              print(myList.docs);
+                              filtered = myList.docs.where((element) => element.data()['nom'].toLowerCase().contains(val)).toList();
+                            });
+                          },
+                        ),
                       Container(
                           padding: EdgeInsets.symmetric(vertical: 5.0),
                           child: Column(
