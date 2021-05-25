@@ -32,10 +32,10 @@ class _DetailCommandeState extends State<DetailCommande> {
     return await db.recupArticlesInCommande(id);
   }
 
-  Future client(String id) async {
-    print('euh ça ne marche pas!!!!!');
-    dynamic result = await db.recupNomClientInCommande(id);
-    print('voici ' + result);
+  Future client() async {
+    dynamic result = await db.recupNomClientInCommande(widget.idcommande);
+    print('CLIENT');
+    print(result.id);
     return result;
   }
 
@@ -44,12 +44,10 @@ class _DetailCommandeState extends State<DetailCommande> {
     return FutureBuilder(
         future: Future.wait([
           commande(widget.idcommande),
-          client(widget.idclient),
+          client(),
         ]),
         builder: (context, AsyncSnapshot<dynamic> snapshot) {
-          print(snapshot.data[0].docs[0].data());
-          print(snapshot.data[1].docs[0].data());
-
+          print(snapshot.data[1].data().toString());
           return Scaffold(
               appBar: AppBar(
                 backgroundColor: Colors.grey,
@@ -62,7 +60,7 @@ class _DetailCommandeState extends State<DetailCommande> {
                   children: [
                     Text('Coordonnées Client',
                         style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text(snapshot.data[1].docs[0].data().toString()),
+                    Text(snapshot.data[1].data().toString()),
                     SizedBox(height: 30.00),
                     Text('Articles',
                         style: TextStyle(fontWeight: FontWeight.bold)),

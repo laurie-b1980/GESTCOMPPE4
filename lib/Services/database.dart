@@ -82,10 +82,12 @@ class DataBaseService {
   }
 
   Future recupNomClientInCommande(String id) async {
-    dynamic Nomcli =
+    print('RECUP: $id');
+    dynamic nomClient =
         await FirebaseFirestore.instance.collection("clients").doc(id).get();
-    print('le voilà' + Nomcli);
-    return Nomcli;
+    print("DB");
+    print(nomClient.data()); 
+    return nomClient;
   }
 
   Future supprimerCommande(String id) async {

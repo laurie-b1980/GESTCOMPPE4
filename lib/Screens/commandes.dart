@@ -75,6 +75,8 @@ class _CommandesState extends State<Commandes> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => DetailCommande(
+                                                idclient:
+                                                    commande.data()['idClient'],
                                                 idcommande: commande.id,
                                                 nomClient:
                                                     db.recupNomClientInCommande(
