@@ -33,7 +33,6 @@ class _DetailCommandeState extends State<DetailCommande> {
   }
 
   Future client(String id) async {
-    print('euh ça ne marche pas!!!!!');
     dynamic result = await db.recupNomClientInCommande(id);
     print('voici ' + result);
     return result;

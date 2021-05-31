@@ -1,11 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:testflutter/Screens/AjoutClient.dart';
-import 'package:testflutter/Screens/ajoutCommande.dart';
 import 'package:testflutter/Screens/clients.dart';
 import 'package:testflutter/Services/database.dart';
-import 'package:testflutter/Screens/commandes.dart';
 import 'package:testflutter/Screens/detailCommandes.dart';
 
 class Commandes extends StatefulWidget {
@@ -21,15 +18,22 @@ class _CommandesState extends State<Commandes> {
     return await db.recupCommandes();
   }
 
+  Future client() async {
+    return await db.recupClients();
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: Future.wait([commandes()]),
+        future: Future.wait([
+          commandes(),
+        ]),
         builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
           if (snapshot.hasError) {
             return Text("Something went wrong");
           }
           if (snapshot.connectionState == ConnectionState.done) {
+            print(snapshot.data[0].docs[0].data());
             return Scaffold(
               appBar: AppBar(
                 title: Text('GESTCOM commandes'),
@@ -57,12 +61,11 @@ class _CommandesState extends State<Commandes> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ajoutClient()),
+                                  builder: (context) => Clients()),
                             );
                           },
                           child: Text('Ajouter'),
                         ),
-                        TextButton(onPressed: () {}, child: Text('Rechercher')),
                       ]),
                       Container(
                           padding: EdgeInsets.symmetric(vertical: 5.0),
@@ -75,6 +78,8 @@ class _CommandesState extends State<Commandes> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => DetailCommande(
+                                                idclient:
+                                                    commande.data()["idClient"],
                                                 idcommande: commande.id,
                                                 nomClient:
                                                     db.recupNomClientInCommande(
@@ -82,7 +87,7 @@ class _CommandesState extends State<Commandes> {
                                                 idarticle:
                                                     db.recupArticlesInCommande(
                                                         commande.id))));
-                                    print('bbbb');
+                                    print(commande.id);
                                   },
                                   child: Text('Numéro :' + commande.id));
                             }).toList(),

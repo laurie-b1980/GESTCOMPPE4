@@ -19,19 +19,19 @@ class _ClientsState extends State<Clients> {
     return await db.recupClients();
   }
 
-  Future list;
-  Future filtered;
+  //Future list;
+  //Future filtered;
 
-  @override
+  /*@override
   void initState() {
     list = clients();
     filtered = list;
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: filtered,
+        future: clients(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Text("Something went wrong");
@@ -70,7 +70,7 @@ class _ClientsState extends State<Clients> {
                         },
                         child: Text('Ajouter'),
                       ),
-                      TextField(
+                      /*TextField(
                         onChanged: (val) {
                           val = val.toLowerCase();
                           setState(() async {
@@ -84,7 +84,7 @@ class _ClientsState extends State<Clients> {
                                 .toList();
                           });
                         },
-                      ),
+                      ),*/
                       Container(
                           padding: EdgeInsets.symmetric(vertical: 5.0),
                           child: Column(
@@ -117,8 +117,3 @@ class _ClientsState extends State<Clients> {
         });
   }
 }
-
-/*AjoutCommandes(
-                                  idclient: idclient,
-                                  nom: nom,
-                                  prenom: prenom,*/

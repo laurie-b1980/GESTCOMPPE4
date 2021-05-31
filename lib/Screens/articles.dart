@@ -13,8 +13,6 @@ class Articles extends StatefulWidget {
 class _ArticlesState extends State<Articles> {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-// Le bouton déconnexion ne fonctionne plus... Il faut rafraîchir la page pour être déconnecter
-
   DataBaseService db = DataBaseService();
 
   Future articles() async {
@@ -29,7 +27,7 @@ class _ArticlesState extends State<Articles> {
           dynamic test = snapshot.data.docs.map((article) {
             return Text(article.data()['Nom article ']);
           }).toList();
-          print(" Data : ${test}");
+
           if (snapshot.hasError) {
             return Text("Something went wrong");
           }
@@ -67,7 +65,7 @@ class _ArticlesState extends State<Articles> {
                           },
                           child: Text('Ajouter'),
                         ),
-                        TextButton(onPressed: () {}, child: Text('Rechercher')),
+                        // TextButton(onPressed: () {}, child: Text('Rechercher')),
                       ]),
                       Container(
                           padding: EdgeInsets.symmetric(vertical: 5.0),
