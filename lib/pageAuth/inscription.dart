@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:testflutter/pageAuth/liaisonAuth.dart';
 import 'package:testflutter/Services/auth.dart';
 
 //template pour le formulaire d'inscription

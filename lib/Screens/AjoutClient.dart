@@ -3,11 +3,13 @@ import 'package:testflutter/Screens/clients.dart';
 import 'package:testflutter/services/auth.dart';
 import 'package:testflutter/services/database.dart';
 
+// ignore: camel_case_types
 class ajoutClient extends StatefulWidget {
   @override
   _ajoutClientState createState() => _ajoutClientState();
 }
 
+// ignore: camel_case_types
 class _ajoutClientState extends State<ajoutClient> {
   final AuthService _auth = AuthService();
 

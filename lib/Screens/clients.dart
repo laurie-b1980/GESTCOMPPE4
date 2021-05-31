@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:testflutter/Screens/AjoutClient.dart';
-
 import 'package:testflutter/services/database.dart';
 import 'package:testflutter/Screens/detailClient.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,15 +17,6 @@ class _ClientsState extends State<Clients> {
   Future clients() async {
     return await db.recupClients();
   }
-
-  //Future list;
-  //Future filtered;
-
-  /*@override
-  void initState() {
-    list = clients();
-    filtered = list;
-  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -70,21 +60,6 @@ class _ClientsState extends State<Clients> {
                         },
                         child: Text('Ajouter'),
                       ),
-                      /*TextField(
-                        onChanged: (val) {
-                          val = val.toLowerCase();
-                          setState(() async {
-                            dynamic myList = await list;
-                            print(myList.docs);
-                            filtered = myList.docs
-                                .where((element) => element
-                                    .data()['nom']
-                                    .toLowerCase()
-                                    .contains(val))
-                                .toList();
-                          });
-                        },
-                      ),*/
                       Container(
                           padding: EdgeInsets.symmetric(vertical: 5.0),
                           child: Column(
