@@ -53,6 +53,8 @@ class _AjoutCommandesState extends State<AjoutCommandes> {
             return Scaffold(
                 appBar: AppBar(
                   title: Text('Commandes'),
+                  backgroundColor: Colors.grey,
+                  elevation: 0.0,
                 ),
                 body: SingleChildScrollView(
                     child: Column(children: [
@@ -72,6 +74,8 @@ class _AjoutCommandesState extends State<AjoutCommandes> {
                     );
                   }).toList()),
                   TextButton(
+                      style: TextButton.styleFrom(
+                          backgroundColor: Colors.grey, primary: Colors.white),
                       onPressed: () async {
                         await db.ajoutCommandes(idclient, listeArticle);
                         print(widget.idclient);

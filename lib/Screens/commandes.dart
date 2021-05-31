@@ -55,18 +55,6 @@ class _CommandesState extends State<Commandes> {
                 child: ListView(
                     padding: const EdgeInsets.only(left: 70.0),
                     children: [
-                      Row(children: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Clients()),
-                            );
-                          },
-                          child: Text('Ajouter'),
-                        ),
-                      ]),
                       Container(
                           padding: EdgeInsets.symmetric(vertical: 5.0),
                           child: Column(

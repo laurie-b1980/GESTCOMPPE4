@@ -64,7 +64,7 @@ class DetailArticle extends StatelessWidget {
                                   builder: (context) => Articles(),
                                 ));
                           },
-                          child: const Text('Confirmez'),
+                          child: const Text('Confirmer'),
                         )
                       ],
                     ),

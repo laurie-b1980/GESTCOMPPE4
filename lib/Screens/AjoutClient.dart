@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:testflutter/Screens/clients.dart';
 import 'package:testflutter/services/auth.dart';
@@ -24,17 +25,19 @@ class _ajoutClientState extends State<ajoutClient> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Liste des clients"),
-          backgroundColor: Colors.blue[400],
+          title: Text("Ajouter client"),
+          backgroundColor: Colors.grey,
           elevation: 0.0,
           actions: <Widget>[
             TextButton.icon(
               onPressed: () async {
-                await _auth.signOut();
+                await FirebaseAuth.instance.signOut();
               },
-              icon: Icon(Icons.person, color: Colors.white),
-              label: Text("Déconnexion", style: TextStyle(color: Colors.white)),
-            )
+              icon: Icon(Icons.person),
+              label: Text("Déconnexion"),
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.blueGrey)),
+            ),
           ],
         ),
         body: SingleChildScrollView(
@@ -84,8 +87,7 @@ class _ajoutClientState extends State<ajoutClient> {
                     SizedBox(height: 20.0),
                     TextButton(
                       style: TextButton.styleFrom(
-                          backgroundColor: Colors.blue[400],
-                          primary: Colors.brown[900]),
+                          backgroundColor: Colors.grey, primary: Colors.white),
                       child: Text(
                         'Ajouter',
                         style: TextStyle(color: Colors.white),

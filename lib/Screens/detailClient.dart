@@ -64,7 +64,7 @@ class DetailClient extends StatelessWidget {
                                   builder: (context) => Clients(),
                                 ));
                           },
-                          child: const Text('Confirmez'),
+                          child: const Text('Confirmer'),
                         )
                       ],
                     ),
