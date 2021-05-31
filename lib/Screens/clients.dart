@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:testflutter/Screens/AjoutClient.dart';
-
 import 'package:testflutter/services/database.dart';
 import 'package:testflutter/Screens/detailClient.dart';
 import 'package:firebase_auth/firebase_auth.dart';

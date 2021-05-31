@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:testflutter/pageAuth/inscription.dart';
-import 'package:testflutter/pageAuth/liaisonAuth.dart';
 import 'package:testflutter/Services/auth.dart';
 
 class Connexion extends StatefulWidget {

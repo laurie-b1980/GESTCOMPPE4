@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:testflutter/Screens/ajoutCommande2.dart';
-
 import 'package:testflutter/Services/database.dart';
 import 'package:testflutter/Screens/clients.dart';
 
@@ -65,7 +64,7 @@ class DetailClient extends StatelessWidget {
                                   builder: (context) => Clients(),
                                 ));
                           },
-                          child: const Text('Confirmez'),
+                          child: const Text('Confirmer'),
                         )
                       ],
                     ),

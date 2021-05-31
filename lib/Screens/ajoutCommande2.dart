@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:testflutter/Screens/clients.dart';
 import 'package:testflutter/Screens/commandes.dart';
 import 'package:testflutter/Services/database.dart';
 
@@ -54,6 +53,8 @@ class _AjoutCommandesState extends State<AjoutCommandes> {
             return Scaffold(
                 appBar: AppBar(
                   title: Text('Commandes'),
+                  backgroundColor: Colors.grey,
+                  elevation: 0.0,
                 ),
                 body: SingleChildScrollView(
                     child: Column(children: [
@@ -73,6 +74,8 @@ class _AjoutCommandesState extends State<AjoutCommandes> {
                     );
                   }).toList()),
                   TextButton(
+                      style: TextButton.styleFrom(
+                          backgroundColor: Colors.grey, primary: Colors.white),
                       onPressed: () async {
                         await db.ajoutCommandes(idclient, listeArticle);
                         print(widget.idclient);

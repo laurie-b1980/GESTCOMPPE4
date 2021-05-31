@@ -1,7 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:testflutter/Screens/commandes.dart';
-
 import 'package:testflutter/Services/database.dart';
 
 class DetailCommande extends StatefulWidget {
