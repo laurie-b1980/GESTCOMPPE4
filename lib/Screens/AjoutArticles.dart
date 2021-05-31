@@ -36,79 +36,83 @@ class _AjoutArticlesState extends State<AjoutArticles> {
                         MaterialStateProperty.all(Colors.blueGrey)),
               ),
             ]),
-        body: Container(
-            padding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 30.00),
-            child: Form(
-              key: _formkey,
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    TextFormField(
-                        decoration: InputDecoration(
-                          labelText: 'Nom Article',
-                          border: OutlineInputBorder(),
-                        ),
-                        validator: (val) =>
-                            val.isEmpty ? 'Mettre le nom de l\'article' : null,
-                        onChanged: (val) {
-                          setState(
-                            () => nomart = val,
-                          );
-                        }),
-                    SizedBox(height: 20.0),
-                    TextFormField(
-                        decoration: InputDecoration(
-                          labelText: 'Prix HT',
-                          border: OutlineInputBorder(),
-                        ),
-                        validator: (val) => double.tryParse(val) == null
-                            ? 'Veuillez entrer une valeur numérique'
-                            : null,
-                        onChanged: (val) {
-                          setState(() => prix = double.tryParse(val));
-                        }),
-                    SizedBox(height: 20.0),
-                    TextFormField(
-                        decoration: InputDecoration(
-                          labelText: 'Stock',
-                          border: OutlineInputBorder(),
-                        ),
-                        validator: (val) => int.tryParse(val) == null
-                            ? 'Veuillez entrer une valeur numérique'
-                            : null,
-                        onChanged: (val) {
-                          setState(() => stock = int.tryParse(val));
-                        }),
-                    SizedBox(height: 20.0),
-                    TextFormField(
-                        decoration: InputDecoration(
-                          labelText: 'Nom Fournisseur',
-                          border: OutlineInputBorder(),
-                        ),
-                        validator: (val) =>
-                            val.isEmpty ? 'Mettre le nom du fournisseur' : null,
-                        onChanged: (val) {
-                          setState(
-                            () => fournisseur = val,
-                          );
-                        }),
-                    SizedBox(height: 20.0),
-                    TextButton(
-                        child: Text('Enregister'),
-                        style: TextButton.styleFrom(
-                            backgroundColor: Colors.grey,
-                            primary: Colors.white),
-                        onPressed: () async {
-                          if (_formkey.currentState.validate()) {
-                            await DataBaseService()
-                                .addArticle(nomart, prix, stock, fournisseur);
-                            print('article enregisté');
-                          }
-                          this.setState(() {
-                            Navigator.pop(context);
-                          });
-                        }),
-                  ]),
-            )));
+        body: SingleChildScrollView(
+            child: Container(
+                padding:
+                    EdgeInsets.symmetric(vertical: 50.0, horizontal: 30.00),
+                child: Form(
+                  key: _formkey,
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        TextFormField(
+                            decoration: InputDecoration(
+                              labelText: 'Nom Article',
+                              border: OutlineInputBorder(),
+                            ),
+                            validator: (val) => val.isEmpty
+                                ? 'Mettre le nom de l\'article'
+                                : null,
+                            onChanged: (val) {
+                              setState(
+                                () => nomart = val,
+                              );
+                            }),
+                        SizedBox(height: 20.0),
+                        TextFormField(
+                            decoration: InputDecoration(
+                              labelText: 'Prix HT',
+                              border: OutlineInputBorder(),
+                            ),
+                            validator: (val) => double.tryParse(val) == null
+                                ? 'Veuillez entrer une valeur numérique'
+                                : null,
+                            onChanged: (val) {
+                              setState(() => prix = double.tryParse(val));
+                            }),
+                        SizedBox(height: 20.0),
+                        TextFormField(
+                            decoration: InputDecoration(
+                              labelText: 'Stock',
+                              border: OutlineInputBorder(),
+                            ),
+                            validator: (val) => int.tryParse(val) == null
+                                ? 'Veuillez entrer une valeur numérique'
+                                : null,
+                            onChanged: (val) {
+                              setState(() => stock = int.tryParse(val));
+                            }),
+                        SizedBox(height: 20.0),
+                        TextFormField(
+                            decoration: InputDecoration(
+                              labelText: 'Nom Fournisseur',
+                              border: OutlineInputBorder(),
+                            ),
+                            validator: (val) => val.isEmpty
+                                ? 'Mettre le nom du fournisseur'
+                                : null,
+                            onChanged: (val) {
+                              setState(
+                                () => fournisseur = val,
+                              );
+                            }),
+                        SizedBox(height: 20.0),
+                        TextButton(
+                            child: Text('Enregister'),
+                            style: TextButton.styleFrom(
+                                backgroundColor: Colors.grey,
+                                primary: Colors.white),
+                            onPressed: () async {
+                              if (_formkey.currentState.validate()) {
+                                await DataBaseService().addArticle(
+                                    nomart, prix, stock, fournisseur);
+                                print('article enregisté');
+                              }
+                              this.setState(() {
+                                Navigator.pop(context);
+                              });
+                            }),
+                      ]),
+                ))));
   }
 }

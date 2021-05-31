@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:testflutter/Screens/ajoutCommande.dart';
-import 'package:testflutter/Services/articlelistcommande.dart';
+import 'package:testflutter/Screens/ajoutCommande2.dart';
 import 'package:testflutter/Services/database.dart';
 import 'package:testflutter/Screens/clients.dart';
 
@@ -25,7 +24,7 @@ class DetailClient extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.grey,
-          title: Text('Détail client $nom '),
+          title: Text('Détail client $nom $prenom'),
         ),
         body: Container(
           padding: EdgeInsets.symmetric(vertical: 70.0, horizontal: 70.0),
@@ -45,15 +44,40 @@ class DetailClient extends StatelessWidget {
               Text('$email'),
               SizedBox(height: 30.00),
               TextButton(
-                  onPressed: () async {
-                    await db.deleteArticle('$idclient');
-                    print('L\'article a comme ID : $idclient');
-                  },
-                  child: Text("Supprimer client "),
-                  style: TextButton.styleFrom(
-                    primary: Colors.white,
-                    backgroundColor: Colors.grey,
-                  )),
+                onPressed: () {
+                  showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                      title:
+                          Text('Etes vous sur de vouloir supprimer Article  ?'),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, 'Annuler'),
+                          child: const Text('Annuler'),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            db.deleteArticle('$idclient');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Clients(),
+                                ));
+                          },
+                          child: const Text('Confirmer'),
+                        )
+                      ],
+                    ),
+                  );
+                },
+                child: Text(
+                  "Supprimer",
+                  style: TextStyle(color: Colors.white, fontSize: 15.0),
+                ),
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.grey,
+                ),
+              ),
               TextButton(
                   onPressed: () {
                     Navigator.push(

@@ -28,7 +28,7 @@ class _ClientsState extends State<Clients> {
           }
           if (snapshot.connectionState == ConnectionState.done) {
             print("message: ${snapshot.data.docs}");
-            print("message ");
+
             return Scaffold(
               appBar: AppBar(
                 title: Text('GESTCOM clients'),
@@ -43,26 +43,23 @@ class _ClientsState extends State<Clients> {
                     style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.blueGrey)),
-                  )
+                  ),
                 ],
               ),
               body: Center(
                 child: ListView(
                     padding: const EdgeInsets.only(left: 70.0),
                     children: [
-                      Row(children: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ajoutClient()),
-                            );
-                          },
-                          child: Text('Ajouter'),
-                        ),
-                        TextButton(onPressed: () {}, child: Text('Rechercher')),
-                      ]),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ajoutClient()),
+                          );
+                        },
+                        child: Text('Ajouter'),
+                      ),
                       Container(
                           padding: EdgeInsets.symmetric(vertical: 5.0),
                           child: Column(
@@ -95,8 +92,3 @@ class _ClientsState extends State<Clients> {
         });
   }
 }
-
-/*AjoutCommandes(
-                                  idclient: idclient,
-                                  nom: nom,
-                                  prenom: prenom,*/

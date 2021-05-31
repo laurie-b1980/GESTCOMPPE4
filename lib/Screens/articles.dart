@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:testflutter/Screens/AjoutArticles.dart';
-import 'package:testflutter/Services/auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:testflutter/Services/database.dart';
 import 'package:testflutter/Screens/detailArticle.dart';
@@ -14,8 +12,6 @@ class Articles extends StatefulWidget {
 
 class _ArticlesState extends State<Articles> {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-// Le bouton déconnexion ne fonctionne plus... Il faut rafraîchir la page pour être déconnecter
 
   DataBaseService db = DataBaseService();
 
@@ -31,7 +27,7 @@ class _ArticlesState extends State<Articles> {
           dynamic test = snapshot.data.docs.map((article) {
             return Text(article.data()['Nom article ']);
           }).toList();
-          print(" Data : ${test}");
+
           if (snapshot.hasError) {
             return Text("Something went wrong");
           }
@@ -69,7 +65,7 @@ class _ArticlesState extends State<Articles> {
                           },
                           child: Text('Ajouter'),
                         ),
-                        TextButton(onPressed: () {}, child: Text('Rechercher')),
+                        // TextButton(onPressed: () {}, child: Text('Rechercher')),
                       ]),
                       Container(
                           padding: EdgeInsets.symmetric(vertical: 5.0),

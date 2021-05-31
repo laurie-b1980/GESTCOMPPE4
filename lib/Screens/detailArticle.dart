@@ -44,15 +44,40 @@ class DetailArticle extends StatelessWidget {
               Text('$fournisseur'),
               SizedBox(height: 30.00),
               TextButton(
-                  onPressed: () async {
-                    await db.deleteArticle('$idart');
-                    print('L\'article a comme ID : $idart');
-                  },
-                  child: Text("Supprimer article "),
-                  style: TextButton.styleFrom(
-                    primary: Colors.white,
-                    backgroundColor: Colors.grey,
-                  ))
+                onPressed: () {
+                  showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                      title:
+                          Text('Etes vous sur de vouloir supprimer Article  ?'),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, 'Annuler'),
+                          child: const Text('Annuler'),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            db.deleteArticle('$idart');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Articles(),
+                                ));
+                          },
+                          child: const Text('Confirmer'),
+                        )
+                      ],
+                    ),
+                  );
+                },
+                child: Text(
+                  "Supprimer",
+                  style: TextStyle(color: Colors.white, fontSize: 15.0),
+                ),
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.grey,
+                ),
+              ),
             ],
           )),
         ));
