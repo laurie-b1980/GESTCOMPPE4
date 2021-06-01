@@ -57,7 +57,7 @@ class DetailClient extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: () {
-                            db.deleteArticle('$idclient');
+                            db.supprimerClient('$idclient');
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
