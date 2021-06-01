@@ -48,8 +48,6 @@ class _AjoutCommandesState extends State<AjoutCommandes> {
             return Text("Something went wrong");
           }
           if (snapshot.connectionState == ConnectionState.done) {
-            print("message liste article: ${snapshot.data.docs}");
-
             return Scaffold(
                 appBar: AppBar(
                   title: Text('Commandes'),

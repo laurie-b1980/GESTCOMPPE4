@@ -46,13 +46,11 @@ class DataBaseService {
 
   //Récuperer client
   Future recupClients() async {
-    print('hello');
     return await clients.get();
   }
 
 // supprimer client
   Future supprimerClient(String id) async {
-    print('Ok');
     await clients.doc(id).delete();
   }
 

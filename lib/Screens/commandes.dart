@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:testflutter/Services/database.dart';
-import 'package:testflutter/Screens/detailCommandes.dart';
 
 class Commandes extends StatefulWidget {
   @override
@@ -72,15 +71,3 @@ class _CommandesState extends State<Commandes> {
         });
   }
 }
-
-/*
-                                            builder: (context) => DetailClient(
-                                                  idclient: client.id,
-                                                  nom: client.data()['nom'],
-                                                  prenom:
-                                                      client.data()['prenom'],
-                                                  adresse:
-                                                      client.data()['adresse'],
-                                                  email: client.data()['email'],
-                                                )));
-                                    print(client.data()['documentId']);}}*/
