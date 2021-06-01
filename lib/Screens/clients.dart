@@ -27,8 +27,6 @@ class _ClientsState extends State<Clients> {
             return Text("Something went wrong");
           }
           if (snapshot.connectionState == ConnectionState.done) {
-            print("message: ${snapshot.data.docs}");
-
             return Scaffold(
               appBar: AppBar(
                 title: Text('GESTCOM clients'),

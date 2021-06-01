@@ -32,7 +32,6 @@ class _InscriptionState extends State<Inscription> {
           key: _formKey,
           // Type column permet d'afficher les enfants de manière verticale
           child: Column(children: <Widget>[
-            //Image.asset('gestcomlogo.png', height: 100.00, width: 100.0), FAIT PETER L'APP
             Center(
                 child: Text('Bienvenue : créez votre compte !',
                     style: Theme.of(context).textTheme.headline5)),

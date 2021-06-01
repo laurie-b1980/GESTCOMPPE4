@@ -4,7 +4,6 @@ import 'package:testflutter/Screens/clients.dart';
 import 'package:testflutter/services/auth.dart';
 import 'package:testflutter/services/database.dart';
 
-// ignore: camel_case_types
 class ajoutClient extends StatefulWidget {
   @override
   _ajoutClientState createState() => _ajoutClientState();
@@ -74,16 +73,6 @@ class _ajoutClientState extends State<ajoutClient> {
                         setState(() => email = val);
                       },
                     ),
-                    /*   SizedBox(height: 20.0),
-                TextFormField(
-                  decoration: InputDecoration(hintText: "Age"),
-                  validator: (val) => int.tryParse(val) == null
-                      ? 'Veuillez entrer une valeur numérique'
-                      : null,
-                  onChanged: (val) {
-                    setState(() => age = int.tryParse(val));
-                  },
-                ), */
                     SizedBox(height: 20.0),
                     TextButton(
                       style: TextButton.styleFrom(

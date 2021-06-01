@@ -99,10 +99,3 @@ class DetailClient extends StatelessWidget {
         ));
   }
 }
-
-/*
-AjoutCommandes(
-                                  idclient: idclient,
-                                  nom: nom,
-                                  prenom: prenom,
-                                )*/

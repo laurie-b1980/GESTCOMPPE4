@@ -17,7 +17,7 @@ class _AjoutArticlesState extends State<AjoutArticles> {
   double prix;
   int stock;
   String fournisseur = "";
-// bouton déconnexion ne fonctionne plus... Rapport avec la base ou le statefull... ?
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

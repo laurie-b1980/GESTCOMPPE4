@@ -75,8 +75,6 @@ class _ConnexionState extends State<Connexion> {
                 ElevatedButton(
                   onPressed: () {
                     widget.transfertPage();
-                    /*Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Inscription()));*/
                   },
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.white,

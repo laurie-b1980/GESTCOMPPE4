@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:testflutter/Screens/clients.dart';
 import 'package:testflutter/Services/database.dart';
 import 'package:testflutter/Screens/detailCommandes.dart';
 
@@ -61,22 +60,7 @@ class _CommandesState extends State<Commandes> {
                             children:
                                 snapshot.data[0].docs.map<Widget>((commande) {
                               return TextButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => DetailCommande(
-                                                idclient:
-                                                    commande.data()["idClient"],
-                                                idcommande: commande.id,
-                                                nomClient:
-                                                    db.recupNomClientInCommande(
-                                                        commande.id),
-                                                idarticle:
-                                                    db.recupArticlesInCommande(
-                                                        commande.id))));
-                                    print(commande.id);
-                                  },
+                                  onPressed: () {},
                                   child: Text('Numéro :' + commande.id));
                             }).toList(),
                           ))

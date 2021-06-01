@@ -24,7 +24,7 @@ class _ArticlesState extends State<Articles> {
     return FutureBuilder(
         future: articles(),
         builder: (context, snapshot) {
-          dynamic test = snapshot.data.docs.map((article) {
+          snapshot.data.docs.map((article) {
             return Text(article.data()['Nom article ']);
           }).toList();
 
@@ -98,11 +98,3 @@ class _ArticlesState extends State<Articles> {
         });
   }
 }
-/* GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => DetailArticle()));
-                            },
-                          ),*/
