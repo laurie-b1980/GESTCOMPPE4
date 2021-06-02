@@ -52,21 +52,20 @@ class _ArticlesState extends State<Articles> {
                 ),
                 body: Center(
                     child: ListView(
-                        padding: const EdgeInsets.only(left: 70.0),
+                        padding: const EdgeInsets.only(left: 10.0),
                         children: [
-                      Row(children: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AjoutArticles()),
-                            );
-                          },
-                          child: Text('Ajouter'),
-                        ),
-                        // TextButton(onPressed: () {}, child: Text('Rechercher')),
-                      ]),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AjoutArticles()),
+                          );
+                        },
+                        child: Text('Ajouter'),
+                      ),
+                      // TextButton(onPressed: () {}, child: Text('Rechercher')),
+
                       Container(
                           padding: EdgeInsets.symmetric(vertical: 5.0),
                           child: Column(

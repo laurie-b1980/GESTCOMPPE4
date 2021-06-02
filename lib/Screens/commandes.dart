@@ -51,7 +51,7 @@ class _CommandesState extends State<Commandes> {
               ),
               body: Center(
                 child: ListView(
-                    padding: const EdgeInsets.only(left: 70.0),
+                    padding: const EdgeInsets.only(left: 10.0),
                     children: [
                       Container(
                           padding: EdgeInsets.symmetric(vertical: 5.0),

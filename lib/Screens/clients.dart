@@ -46,7 +46,7 @@ class _ClientsState extends State<Clients> {
               ),
               body: Center(
                 child: ListView(
-                    padding: const EdgeInsets.only(left: 70.0),
+                    padding: const EdgeInsets.only(left: 10.0),
                     children: [
                       TextButton(
                         onPressed: () {

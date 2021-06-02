@@ -24,6 +24,7 @@ class _AjoutCommandesState extends State<AjoutCommandes> {
   String idclient;
   String nom;
   String prenom;
+  double sommeprix = 25.12;
 
   _AjoutCommandesState({
     Key key,
@@ -56,21 +57,35 @@ class _AjoutCommandesState extends State<AjoutCommandes> {
                 ),
                 body: SingleChildScrollView(
                     child: Column(children: [
-                  Text('Commande pour le client :  $nom $prenom '),
+                  Text('Commande pour le client :  $nom $prenom ',
+                      style: TextStyle(fontSize: 20)),
                   Column(
                       children: snapshot.data.docs.map<Widget>((art) {
-                    return Card(
-                      child: ListTile(
-                          trailing: IconButton(
-                              icon: const Icon(Icons.add),
-                              onPressed: () {
-                                listeArticle.add({'article': art.id});
-                                print(listeArticle);
-                              }),
-                          title: Text('Nom de l\'article:' +
-                              art.data()['Nom article '])),
+                    return Container(
+                      height: 100,
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                          child: ListTile(
+                            trailing: IconButton(
+                                icon: const Icon(Icons.add),
+                                onPressed: () {
+                                  listeArticle.add({
+                                    'article': art.id,
+                                    'prix': art.data()['Prix HT']
+                                  });
+                                  print(listeArticle);
+                                  print(art.data()['Prix HT']);
+                                }),
+                            title: Text('Nom de l\'article: ' +
+                                art.data()['Nom article ']),
+                            subtitle: Text('Prix de l\'article: ' +
+                                art.data()['Prix HT'].toString() +
+                                '€'),
+                          )),
                     );
                   }).toList()),
+                  Text('Total de la commande : '),
                   TextButton(
                       style: TextButton.styleFrom(
                           backgroundColor: Colors.grey, primary: Colors.white),
