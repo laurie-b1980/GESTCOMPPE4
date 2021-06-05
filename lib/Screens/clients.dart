@@ -18,12 +18,14 @@ class _ClientsState extends State<Clients> {
   Future clients() async {
     return await db.recupClients();
   }
+  //Future list;
+  //Future filtered
 
   /*Future list;
   Future filtered;
   @override
   void initState() {
-    super.initState();
+    super.initState();(à voir)
     list = clients();
     filtered = list;
   }*/
@@ -32,6 +34,7 @@ class _ClientsState extends State<Clients> {
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: clients(),
+        //future : filterd;
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Text("Something went wrong");
@@ -71,8 +74,8 @@ class _ClientsState extends State<Clients> {
                       TextField(
                           /*onChanged: (val) {
                           val = val.toLowerCase();
-                          setState(() {
-                            dynamic myList = list;
+                          setState(() async {
+                            dynamic myList = await list;
                             print(myList.docs);
                             filtered = myList.docs
                                 .where((element) => element

@@ -81,7 +81,7 @@ class DataBaseService {
 
   Future recupNomClientInCommande(String id) async {
     dynamic nomcli =
-        await FirebaseFirestore.instance.collection("clients").doc(id).get();
+        await FirebaseFirestore.instance.collection("clients").doc().get();
     return nomcli;
   }
 

@@ -23,9 +23,7 @@ class _CommandesState extends State<Commandes> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: Future.wait([
-          commandes(),
-        ]),
+        future: Future.wait([commandes(), client()]),
         builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
           if (snapshot.hasError) {
             return Text("Something went wrong");
@@ -59,7 +57,9 @@ class _CommandesState extends State<Commandes> {
                             children:
                                 snapshot.data[0].docs.map<Widget>((commande) {
                               return TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    print(snapshot.data[1].docs[1].data());
+                                  },
                                   child: Text('Numéro :' + commande.id));
                             }).toList(),
                           ))
