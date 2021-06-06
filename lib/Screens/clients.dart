@@ -71,12 +71,13 @@ class _ClientsState extends State<Clients> {
                       },
                       child: Text('Ajouter'),
                     ),
+                    // test bouton simple :
                     /*Container(
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text('Voici un bouton'),
-                        ),
-                      )*/
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text('Voici un bouton'),
+                      ),
+                    ),*/
                     TextField(
                         /* onChanged: (val) {
                           val = val.toLowerCase();
@@ -115,6 +116,7 @@ class _ClientsState extends State<Clients> {
                         }).toList(),
                       ),
                     ),
+                    //Test Bouton : avec ICON
                     /*Container(
                         child: TextButton.icon(
                             onPressed: () {},
