@@ -58,21 +58,27 @@ class _ClientsState extends State<Clients> {
                 ],
               ),
               body: Center(
-                child: ListView(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ajoutClient()),
-                          );
-                        },
-                        child: Text('Ajouter'),
-                      ),
-                      TextField(
-                          /*onChanged: (val) {
+                  child: ListView(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      children: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ajoutClient()),
+                        );
+                      },
+                      child: Text('Ajouter'),
+                    ),
+                    /*Container(
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Text('Voici un bouton'),
+                        ),
+                      )*/
+                    TextField(
+                        /* onChanged: (val) {
                           val = val.toLowerCase();
                           setState(() async {
                             dynamic myList = await list;
@@ -85,36 +91,44 @@ class _ClientsState extends State<Clients> {
                                 .toList();
                           });
                         },*/
-                          ),
-                      Container(
-                          padding: EdgeInsets.symmetric(vertical: 5.0),
-                          child: Column(
-                            children: snapshot.data.docs.map<Widget>((client) {
-                              return TextButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => DetailClient(
-                                                  idclient: client.id,
-                                                  nom: client.data()['nom'],
-                                                  prenom:
-                                                      client.data()['prenom'],
-                                                  adresse:
-                                                      client.data()['adresse'],
-                                                  email: client.data()['email'],
-                                                )));
-                                    print(client.data()['documentId']);
-                                  },
-                                  child: Text('Nom du client :' +
-                                      client.data()['nom']));
-                            }).toList(),
-                          ))
-                    ]),
-              ),
+                        ),
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 5.0),
+                      child: Column(
+                        children: snapshot.data.docs.map<Widget>((client) {
+                          return TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => DetailClient(
+                                              idclient: client.id,
+                                              nom: client.data()['nom'],
+                                              prenom: client.data()['prenom'],
+                                              adresse: client.data()['adresse'],
+                                              email: client.data()['email'],
+                                            )));
+                                print(client.data()['documentId']);
+                              },
+                              child: Text(
+                                  'Nom du client :' + client.data()['nom']));
+                        }).toList(),
+                      ),
+                    ),
+                    /*Container(
+                        child: TextButton.icon(
+                            onPressed: () {},
+                            icon: Icon(Icons.list_sharp),
+                            label: Text('Voici mon bouton')))*/
+                  ])),
             );
           }
           return Text('Chargement...');
         });
   }
 }
+/*  return client.data().sort((a, b) => {
+                                    a['nom']
+                                        .toLowerCase()
+                                        .comparaTo(b['nom'].toLowerCase())
+                                  });*/
